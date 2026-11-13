@@ -1,10 +1,16 @@
-# 🗺️ marauder
+<p align="center">
+  <img src="assets/logo-crest.svg" alt="marauder" width="520">
+</p>
 
-> Maps a Linux host and reveals privilege-escalation paths — a lean, single-binary post-exploitation enumeration tool in Go.
+<p align="center">
+  <em>Aperit Semitas — it opens the paths.</em>
+</p>
 
-![status](https://img.shields.io/badge/status-early%20development-orange)
-![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white)
-![license](https://img.shields.io/badge/license-MIT-blue)
+<p align="center">
+  <img src="https://img.shields.io/badge/status-early%20development-orange" alt="status">
+  <img src="https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white" alt="Go">
+  <img src="https://img.shields.io/badge/license-MIT-blue" alt="license">
+</p>
 
 **marauder** is a lightweight, single-binary enumeration tool for Linux post-exploitation. Once you have a foothold on a host (in an authorized engagement or a CTF), it maps the system — like a Marauder's Map for a box — and reveals local privilege-escalation paths and useful secrets.
 
