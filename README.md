@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="assets/logo-crest.svg" alt="marauder" width="520">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-crest-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/logo-crest.svg">
+    <img src="assets/logo-crest.svg" alt="marauder" width="520">
+  </picture>
 </p>
 
 <p align="center">
