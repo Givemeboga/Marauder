@@ -1,0 +1,11 @@
+# Compiled binary
+/marauder
+
+# Test & coverage output
+*.test
+*.out
+
+# Editor / OS cruft
+.DS_Store
+.idea/
+.vscode/
