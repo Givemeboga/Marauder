@@ -26,6 +26,24 @@ It is an **assessment tool**: it enumerates and reports — it does **not** expl
 
 This tool is intended **only** for systems you own or have explicit written permission to test (CTFs, labs, authorized penetration tests). Using it against systems without authorization is illegal. You are responsible for how you use it.
 
+## What it looks like
+
+When you run `marauder`, you'll see:
+
+```
+         .                                                       .
+      .*.    __  __    _    ____      _   _   _  ____  _____ ____     .*.
+       .    |  \/  |  / \  |  _ \    / \ | | | ||  _ \| ____|  _ \     .
+            | |\/| | / _ \ | |_) |  / _ \| | | || | | |  _| | |_) |
+            | |  | |/ ___ \|  _ <  / ___ \ |_| || |_| | |___|  _ <
+            |_|  |_/_/   \_\_| \_\/_/   \_\___/ |____/|_____|_| \_\
+
+                Aperit Semitas - it opens the paths | v0.1
+```
+
+The banner prints to stderr and is suppressed by `--quiet` or `--json`
+so it never pollutes piped output.
+
 ## Commands
 
 marauder is organized into three modules, each named for what it does:
