@@ -1,5 +1,7 @@
 # Compiled binary
 /marauder
+*.exe
+/marauder-linux
 
 # Test & coverage output
 *.test
