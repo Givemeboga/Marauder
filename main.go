@@ -10,10 +10,10 @@ func fileEnum(header string, path string) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "could not read:", err)
-	} else {
-		fmt.Println(header)
-		fmt.Print(string(data))
+		return
 	}
+	fmt.Println(header)
+	fmt.Print(string(data))
 }
 
 func main() {
