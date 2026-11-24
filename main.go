@@ -6,6 +6,16 @@ import (
 	"runtime"
 )
 
+func fileEnum(header string, path string) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "could not read:", err)
+	} else {
+		fmt.Println(header)
+		fmt.Print(string(data))
+	}
+}
+
 func main() {
 	name, err := os.Hostname()
 	if err != nil {
@@ -14,12 +24,6 @@ func main() {
 	}
 	fmt.Printf("marauder: running on %s/%s\n", runtime.GOOS, runtime.GOARCH)
 	fmt.Printf("hostname: %s\n", name)
-
-	data, err := os.ReadFile("/etc/os-release")
-	if err != nil {
-		fmt.Fprintln(os.Stderr, "could not read:", err)
-	} else {
-		fmt.Println("os-release:")
-		fmt.Print(string(data))
-	}
+	fileEnum("os-release:", "/etc/os-release")
+	fileEnum("kernel:", "/proc/version")
 }
