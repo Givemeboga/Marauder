@@ -6,13 +6,13 @@ import (
 	"runtime"
 )
 
-func fileEnum(header string, path string) {
+func fileEnum(path string) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "could not read:", err)
 		return
 	}
-	fmt.Println(header)
+	fmt.Printf("%s:\n", path)
 	fmt.Print(string(data))
 }
 
@@ -24,6 +24,14 @@ func main() {
 	}
 	fmt.Printf("marauder: running on %s/%s\n", runtime.GOOS, runtime.GOARCH)
 	fmt.Printf("hostname: %s\n", name)
-	fileEnum("os-release:", "/etc/os-release")
-	fileEnum("kernel:", "/proc/version")
+	paths := []string{
+		"/etc/passwd",
+		"/etc/shadow",
+		"/etc/hosts",
+		"/etc/resolv.conf",
+		"wrong/path/to/file",
+	}
+	for _, path := range paths {
+		fileEnum(path)
+	}
 }
