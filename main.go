@@ -7,6 +7,14 @@ import (
 	"strings"
 )
 
+type user struct {
+	name  string
+	uid   string
+	gid   string
+	home  string
+	shell string
+}
+
 func fileEnum(path string) {
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -28,7 +36,14 @@ func lineParser() {
 	for _, line := range lines {
 		parts := strings.Split(line, ":")
 		if len(parts) == 7 {
-			fmt.Printf("User: %s, UID: %s, GID: %s, Home: %s, Shell: %s\n", parts[0], parts[2], parts[3], parts[5], parts[6])
+			usr := user{
+				name:  parts[0],
+				uid:   parts[2],
+				gid:   parts[3],
+				home:  parts[5],
+				shell: parts[6],
+			}
+			fmt.Printf("User: %s, UID: %s, GID: %s, Home: %s, Shell: %s\n", usr.name, usr.uid, usr.gid, usr.home, usr.shell)
 		}
 	}
 }
