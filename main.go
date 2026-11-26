@@ -21,7 +21,8 @@ func fileEnum(path string) {
 		fmt.Fprintln(os.Stderr, "could not read:", err)
 		return
 	}
-	fmt.Printf("%s:\n", path)
+	fmt.Println("")
+	fmt.Printf("== %s ==\n", path)
 	fmt.Print(string(data))
 }
 
@@ -67,8 +68,12 @@ func main() {
 	users, err := userData()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "marauder: failed to read user data: %v\n", err)
-	}
-	for _, usr := range users {
-		fmt.Printf("User: %s, UID: %s, GID: %s, Home: %s, Shell: %s\n", usr.name, usr.uid, usr.gid, usr.home, usr.shell)
+	} else {
+		fmt.Println("")
+		fmt.Println("== Users ==")
+		fmt.Printf("%-16s %-5s %-5s %-18s %-s\n", "Name", "UID", "GID", "Home", "Shell")
+		for _, usr := range users {
+			fmt.Printf("%-16s %-5s %-5s %-18s %-s\n", usr.name, usr.uid, usr.gid, usr.home, usr.shell)
+		}
 	}
 }
