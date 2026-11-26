@@ -1,5 +1,10 @@
 package banner
 
+import (
+	"fmt"
+	"os"
+)
+
 // Banner is the marauder startup banner. Printed to stderr by default,
 // suppressed when --json or --quiet is set. Pure ASCII only — must
 // render on reverse shells and narrow terminals.
@@ -17,4 +22,6 @@ const Banner = `
 // Print writes the banner to stderr. Call from main() unless the user
 // asked for --json or --quiet.
 func Print() {
+	fmt.Fprint(os.Stderr, Banner)
+	fmt.Fprintln(os.Stderr)
 }

@@ -5,6 +5,8 @@ import (
 	"os"
 	"runtime"
 	"strings"
+
+	"github.com/Givemeboga/marauder/internal/banner"
 )
 
 type user struct {
@@ -51,6 +53,7 @@ func userData() ([]user, error) {
 }
 
 func main() {
+	banner.Print()
 	name, err := os.Hostname()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "marauder: failed to get hostname: %v\n", err)
