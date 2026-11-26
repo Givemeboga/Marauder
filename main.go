@@ -25,14 +25,14 @@ func fileEnum(path string) {
 	fmt.Print(string(data))
 }
 
-func lineParser() {
+func userData() ([]user, error) {
 	data, err := os.ReadFile("/etc/passwd")
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "could not read:", err)
-		return
+		return nil, err
 	}
 	text := string(data)
 	lines := strings.Split(text, "\n")
+	var result []user
 	for _, line := range lines {
 		parts := strings.Split(line, ":")
 		if len(parts) == 7 {
@@ -43,9 +43,10 @@ func lineParser() {
 				home:  parts[5],
 				shell: parts[6],
 			}
-			fmt.Printf("User: %s, UID: %s, GID: %s, Home: %s, Shell: %s\n", usr.name, usr.uid, usr.gid, usr.home, usr.shell)
+			result = append(result, usr)
 		}
 	}
+	return result, nil
 }
 
 func main() {
@@ -63,5 +64,11 @@ func main() {
 	for _, path := range paths {
 		fileEnum(path)
 	}
-	lineParser()
+	users, err := userData()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "marauder: failed to read user data: %v\n", err)
+	}
+	for _, usr := range users {
+		fmt.Printf("User: %s, UID: %s, GID: %s, Home: %s, Shell: %s\n", usr.name, usr.uid, usr.gid, usr.home, usr.shell)
+	}
 }
